@@ -1,41 +1,151 @@
-# Prerequisites
-*.d
+# ==============================================
+# 通用忽略规则（所有语言/环境通用）
+# ==============================================
+# 操作系统相关
+.DS_Store                  # macOS 缓存文件
+Thumbs.db                  # Windows 缩略图缓存
+*.swp                      # Vim 临时文件
+*.swo                      # Vim 交换文件
+*~                         # 部分编辑器的临时文件（如Emacs）
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# 编辑器/IDE 配置（除非团队共享，否则忽略）
+.idea/                     # JetBrains 系列（CLion、PyCharm等）
+.vscode/                   # VSCode 个人配置（settings.json、launch.json等）
+!.vscode/extensions.json   # 例外：保留团队共享的扩展推荐列表
+!.vscode/tasks.json        # 例外：若有统一构建任务，可保留
+*.suo                      # Visual Studio 解决方案配置
+*.user                     # Visual Studio 用户配置
+.c9/                       # Cloud9 编辑器配置
+.vs/                       # Visual Studio 工作区文件
+
+# 日志、临时文件和缓存
+logs/
+*.log
+tmp/
+temp/
+.cache/
+.pytest_cache/             # Python 测试缓存
+
+# 压缩包/安装包（不提交二进制分发文件）
+*.zip
+*.tar.gz
+*.tar.bz2
+*.7z
+*.exe
+*.deb
+*.rpm
+
+# 敏感信息文件（本地配置、密钥等）
+.env
+.env.local
+*.key
+*.pem
+config.local
+
+# ==============================================
+# Python 特有忽略规则
+# ==============================================
+# 字节码和缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so                       # Python 编译的C扩展（若手动维护则保留）
+
+# 虚拟环境（本地依赖环境，不共享）
+venv/
+env/
+ENV/
+*.venv
+.venv/
+env.bak/
+venv.bak/
+
+# 包管理与构建产物
+dist/                      # 打包输出（如pip wheel）
+build/                     # 构建目录
+*.egg-info/                # 鸡蛋包元信息
+*.eggs/
+MANIFEST                   # 包清单（自动生成）
+requirements.txt.lock      # 自动生成的依赖锁（手动维护的requirements.txt不忽略）
+
+# 数据与模型（大文件建议用Git LFS或外部存储）
+*.pth                      # PyTorch 模型
+*.pt
+*.h5                       # Keras/TensorFlow 模型
+*.ckpt                     # 检查点文件
+*.csv                      # 本地数据（样本数据可放docs/data并取消忽略）
+*.npy                      # NumPy 数据
+*.npz
+data/                      # 本地数据目录（若需共享样本，可改为!data/samples/）
+
+# 测试与覆盖率报告
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/                      # 多环境测试工具缓存
+
+# ==============================================
+# C++ 特有忽略规则
+# ==============================================
+# 编译产物
+*.o                        # 目标文件
 *.obj
+*.out                      # 可执行文件（Linux）
+*.exe                      # 可执行文件（Windows）
+*.so                       # 动态链接库（Linux）
+*.dll                      # 动态链接库（Windows）
+*.a                        # 静态库（Linux）
+*.lib                      # 静态库（Windows）
+*.lo                       # Libtool 目标文件
+*.slo                      # 共享目标文件
 
-# Precompiled Headers
+# 编译与构建目录
+build/                     # 通用构建目录
+cmake-build-*/             # CLion/CMake 构建目录
+out/                       # 部分IDE的输出目录
+bin/                       # 二进制文件目录
+obj/                       # 目标文件目录
+
+# CMake 相关临时文件
+CMakeCache.txt
+CMakeFiles/
+Makefile
+Makefile.in
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+
+# 预编译头文件
 *.gch
 *.pch
 
-# Linker files
-*.ilk
+# 其他工具链产物
+.deps/                     # Automake 依赖目录
+.libs/                     # Libtool 库目录
+*.ninja                    # Ninja 构建文件
+build.ninja
+rules.ninja
 
-# Debugger Files
-*.pdb
+# ==============================================
+# 视觉组项目特有忽略（图片/视频等大文件）
+# ==============================================
+# 大尺寸媒体文件（建议用链接或Git LFS管理）
+*.bmp
+*.jpg
+*.jpeg
+*.png
+*.tiff
+*.gif
+*.mp4
+*.avi
+*.mov
+*.mkv
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# 例外：保留文档中的示例小图
+!docs/examples/*.png
+!docs/examples/*.jpg
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# debug information files
-*.dwo
+# 临时测试脚本（本地调试用，不提交）
+test_*.py
+test_*.cpp
+test_*.h
