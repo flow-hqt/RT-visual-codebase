@@ -1,0 +1,78 @@
+# ==============================================
+# 1. 文本文件换行符统一（解决跨平台冲突）
+# ==============================================
+# 所有文本文件自动识别，提交时统一用LF换行
+* text=auto eol=lf
+
+# 特殊文本文件：Windows批处理保留CRLF（若有）
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 明确标记代码文件为文本（确保Git正确处理）
+*.cpp text
+*.h text
+*.hpp text
+*.c text
+*.py text
+*.json text
+*.xml text
+*.md text  # Markdown文档
+*.txt text
+
+
+# ==============================================
+# 2. 二进制文件标记（避免Git误处理）
+# ==============================================
+# 视觉组常用媒体文件
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+*.tiff binary
+*.gif binary
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.mkv binary
+
+# 模型与数据文件
+*.pth binary  # PyTorch模型
+*.pt binary   # PyTorch模型
+*.h5 binary   # Keras/TensorFlow模型
+*.ckpt binary # 检查点文件
+*.npy binary  # NumPy数组
+*.npz binary  # 压缩NumPy数组
+*.pkl binary  # Python序列化文件
+
+# C++编译产物（二进制）
+*.o binary    # 目标文件
+*.obj binary  # Windows目标文件
+*.so binary   # Linux动态库
+*.dll binary  # Windows动态库
+*.a binary    # 静态库
+*.lib binary  # Windows静态库
+*.out binary  # 可执行文件
+*.exe binary  # Windows可执行文件
+
+
+# ==============================================
+# 3. Git LFS大文件跟踪（可选，需先安装Git LFS）
+# ==============================================
+# 用LFS管理超过100MB的大文件（模型、视频等）
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+*.mkv filter=lfs diff=lfs merge=lfs -text
+
+
+# ==============================================
+# 4. 特殊文件处理
+# ==============================================
+# 忽略.gitattributes自身的换行符转换（避免递归问题）
+.gitattributes -text
+
+# 确保CMakeLists.txt作为文本处理（跨平台构建脚本）
+CMakeLists.txt text
+*.cmake text
