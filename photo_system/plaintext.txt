@@ -1,0 +1,19 @@
+RT-visual-codebase/          (根目录, 已有 .git, .vscode)
+├── .git/
+├── .vscode/
+├── README.md
+├── 其他项目/
+└── photo_system/            (你新建的文件夹)
+    ├── .gitignore           <-- 新增：仅针对本项目的忽略规则
+    ├── CMakeLists.txt       <-- 核心构建脚本
+    ├── external/            <-- 第三方库 (stb)
+    │   ├── stb_image.h
+    │   └── stb_image_write.h
+    ├── include/             <-- 头文件
+    │   └── rt_vision/
+    │       └── image_system.h
+    ├── src/                 <-- 源代码
+    │   └── image_system.cpp
+    ├── app/                 <-- 业务入口
+    │   └── main.cpp
+    └── build/               <-- 编译输出目录 (会被 git 忽略)
