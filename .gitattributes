@@ -16,7 +16,8 @@
 *.py text
 *.json text
 *.xml text
-*.md text  # Markdown文档
+# Markdown文档
+*.md text
 *.txt text
 
 
@@ -36,23 +37,38 @@
 *.mkv binary
 
 # 模型与数据文件
-*.pth binary  # PyTorch模型
-*.pt binary   # PyTorch模型
-*.h5 binary   # Keras/TensorFlow模型
-*.ckpt binary # 检查点文件
-*.npy binary  # NumPy数组
-*.npz binary  # 压缩NumPy数组
-*.pkl binary  # Python序列化文件
+# PyTorch模型
+*.pth binary
+# PyTorch模型
+*.pt binary
+# Keras/TensorFlow模型
+*.h5 binary
+# 检查点文件
+*.ckpt binary
+# NumPy数组
+*.npy binary
+# 压缩NumPy数组
+*.npz binary
+# Python序列化文件
+*.pkl binary
 
 # C++编译产物（二进制）
-*.o binary    # 目标文件
-*.obj binary  # Windows目标文件
-*.so binary   # Linux动态库
-*.dll binary  # Windows动态库
-*.a binary    # 静态库
-*.lib binary  # Windows静态库
-*.out binary  # 可执行文件
-*.exe binary  # Windows可执行文件
+# 目标文件
+*.o binary
+# Windows目标文件
+*.obj binary
+# Linux动态库
+*.so binary
+# Windows动态库
+*.dll binary
+# 静态库
+*.a binary
+# Windows静态库
+*.lib binary
+# 可执行文件
+*.out binary
+# Windows可执行文件
+*.exe binary
 
 
 # ==============================================
